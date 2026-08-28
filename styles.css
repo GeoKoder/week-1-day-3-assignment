@@ -23,6 +23,7 @@
 
   /* borders */
   --color-border: #e4e7ec;
+  --color-shadow: rgba(16, 24, 40, 0.12);
 
   /* layout */
   --radius: 8px;
@@ -33,6 +34,12 @@
 * {
   box-sizing: border-box;
   margin: 0;
+}
+
+/* Sticky navigation page */
+html:has(.sticky-nav-page) {
+  /* Scroll behaviour need to be placed in the html. the has() checks whether there is a class called .,sticky-nav-page before applying the smooth scroll */
+  scroll-behavior: smooth;
 }
 
 /* Styling for the body  */
@@ -234,6 +241,103 @@ main > button:hover {
   font-size: 0.95rem;
 }
 
+.sticky-nav-page header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg-nav);
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+.sticky-nav-page main {
+  background-color: var(--color-bg-page);
+}
+
+.sticky-nav-page section {
+  max-width: var(--layout-max);
+  margin: 0 auto;
+  padding: 72px 24px;
+  min-height: 85vh;
+  scroll-margin-top: 80px;
+}
+
+.sticky-nav-page section h2 {
+  color: var(--color-accent);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.sticky-nav-page section p {
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 42rem;
+  margin-bottom: 16px;
+}
+
+/* Styling for the FAQ Accordion  */
+#faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+.faq-item summary {
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 20px 24px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Removes the built in arrow or triangle marker  */
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  color: var(--color-cta);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.faq-item summary:hover {
+  color: var(--color-cta-hover);
+}
+
+.faq-item[open] summary {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-item[open] summary::after {
+  content: "–";
+}
+
+.faq-content {
+  padding: 16px 24px 20px;
+}
+
+.faq-content p {
+  margin-bottom: 0;
+  max-width: none;
+}
+
 /* Styling for the footer section  */
 footer {
   display: flex;
@@ -270,41 +374,46 @@ footer svg {
   display: block;
 }
 
+
+
+
+
 /* Media queries to ensure responsiveness  */
 @media (min-width: 1025px) {
+  /* Very large screens  */
   .gallery {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (min-width: 768px) {
-  /* Creates padding that works on smaller screens  */
+@media (min-width: 768px) and (max-width: 1024px){
+  /* Desktop View  */
   .cards {
+    /* Creates padding that works on smaller screens  */
     padding-left: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
     padding-right: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
   }
 
-  footer {
-    padding-left: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
-    padding-right: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
   .gallery {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  footer {
+    /* Creates padding that works on smaller screens  */
+    padding-left: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
+    padding-right: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
+  }
 }
 
-
 @media (max-width: 767px) {
+  /* Mobile View  */
   nav {
     flex-wrap: wrap;
     gap: 8px;
   }
 
   ul {
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
   }
 
@@ -331,4 +440,3 @@ footer svg {
     gap: 12px;
   }
 }
-
