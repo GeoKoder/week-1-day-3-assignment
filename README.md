@@ -9,7 +9,7 @@
 ![Screenshot of the Layout Page](screenshots/layout-desktop.png)
 
 - Mobile View  
-![Screenshot of the Layout Page](screenshots/layout-mobile1.png)
+![Screenshot of the Layout Page](screenshots/layout-mobile1.png)  
 ![Screenshot of the Layout Page](screenshots/layout-mobile2.png)
 
 - This is the output of the Gallery Page: 
