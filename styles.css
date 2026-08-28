@@ -1,0 +1,33 @@
+/* Colours generated with Claude ai */
+:root {
+  /* backgrounds */
+  --color-bg-page: #ffffff;
+  --color-bg-hero: #0f2c4c;       /* deep navy hero */
+  --color-bg-card: #ffffff;       /* feature cards, bordered not tinted */
+
+  /* brand / accent */
+  --color-accent: #0f2c4c;        /* icons — same navy as hero */
+  --color-cta: #e3a008;           /* gold CTA button */
+  --color-cta-hover: #c98e04;
+
+  /* text */
+  --color-text-primary: #101828;
+  --color-text-secondary: #475467;
+  --color-text-on-hero: #ffffff;
+  --color-text-on-hero-muted: #c3cedb;
+  --color-text-on-cta: #101828;
+
+  /* borders */
+  --color-border: #e4e7ec;
+
+  /* layout */
+  --radius: 8px;
+  --radius-card: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
