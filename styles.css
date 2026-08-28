@@ -2,13 +2,17 @@
 :root {
   /* backgrounds */
   --color-bg-page: #ffffff;
-  --color-bg-hero: #0f2c4c;       /* deep navy hero */
-  --color-bg-card: #ffffff;       /* feature cards, bordered not tinted */
+  --color-bg-hero: #0f2c4c; /* deep navy hero */
+  --color-bg-features: #111111;
+  --color-bg-card: #ffffff;
+  --color-bg-nav: #ffffff;
+  /* feature cards, bordered not tinted */
 
   /* brand / accent */
-  --color-accent: #0f2c4c;        /* icons — same navy as hero */
-  --color-cta: #e3a008;           /* gold CTA button */
+  --color-accent: #0f2c4c; /* icons — same navy as hero */
+  --color-cta: #e3a008; /* gold CTA button */
   --color-cta-hover: #c98e04;
+  --color-nav-link: #475467;
 
   /* text */
   --color-text-primary: #101828;
@@ -23,11 +27,238 @@
   /* layout */
   --radius: 8px;
   --radius-card: 12px;
+  --layout-max: 1120px;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    sans-serif;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-page);
+  min-height: 100vh;
+}
 
+header {
+  background-color: var(--color-bg-nav);
+  border-bottom: 1px solid var(--color-border);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--layout-max);
+  margin: 0 auto;
+  padding: 16px 24px;
+  background-color: var(--color-bg-nav);
+}
+
+nav > p {
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em; /* Squeezes the letters together */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  gap: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+nav li a {
+  text-decoration: none;
+  color: var(--color-nav-link);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+nav button {
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+nav button:hover {
+  background-color: var(--color-accent);
+  color: var(--color-text-on-hero);
+}
+
+/* Hero sits on navy; feature cards sit on near-black */
+main {
+  background-color: var(--color-bg-hero);
+  min-height: 300px;
+}
+
+main > h1 {
+  color: var(--color-text-on-hero);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);  /*This font size automatically scales between a minimum and maximum value based on screen width */
+  font-weight: 700;
+  letter-spacing: -0.03em; /* Squeezes the letters together */
+  line-height: 1.2;
+  text-align: center;
+  max-width: 18ch;
+  margin: 0 auto; /* Centres a div */
+  padding: 88px 24px 16px;
+}
+
+main > h2 {
+  color: var(--color-text-on-hero-muted);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+main > button {
+  display: block;
+  margin: 32px auto 88px;
+  background-color: var(--color-cta);
+  color: var(--color-text-on-cta);
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 28px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+main > button:hover {
+  background-color: var(--color-cta-hover);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  background-color: var(--color-bg-features);
+  padding: 64px 24px;
+  max-width: none;
+}
+
+.card-container {
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-card);
+  padding: 28px 24px;
+}
+
+.card-container svg {
+  width: 28px;
+  height: 28px;
+  color: var(--color-accent);
+  display: block;
+}
+
+.card-container h3 {
+  color: var(--color-text-primary);
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 16px 0 8px;
+}
+
+.card-container p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--color-bg-page);
+  border-top: 1px solid var(--color-border);
+  padding: 20px 24px;
+}
+
+footer p {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+footer ul {
+  gap: 20px;
+}
+
+footer a {
+  color: #98a2b3;
+  display: flex;
+  align-items: center;
+}
+
+footer a:hover {
+  color: var(--color-accent);
+}
+
+footer svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    padding-left: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
+    padding-right: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
+  }
+
+  footer {
+    padding-left: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
+    padding-right: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
+  }
+}
+
+@media (max-width: 767px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  ul {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+
+  main > h1 {
+    padding-top: 56px;
+  }
+
+  main > button {
+    margin-bottom: 56px;
+  }
+
+  footer {
+    flex-direction: row;
+    gap: 5px;
+    text-align: center;
+  }
+
+  footer ul {
+    gap: 12px;
+  }
+}
