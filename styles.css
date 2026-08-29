@@ -158,8 +158,9 @@ main > button:hover {
 
 /* Styling for the card elements  */
 .cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 24px;
   background-color: var(--color-bg-features);
   padding: 64px 24px;
