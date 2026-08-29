@@ -159,8 +159,9 @@ main > button:hover {
 /* Styling for the card elements  */
 .cards {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
   gap: 24px;
   background-color: var(--color-bg-features);
   padding: 64px 24px;
@@ -171,6 +172,8 @@ main > button:hover {
   background-color: var(--color-bg-card);
   border-radius: var(--radius-card);
   padding: 28px 24px;
+  flex: 1 1 280px;
+  min-width: 0;
 }
 
 .card-container svg {
@@ -390,7 +393,6 @@ footer svg {
 @media (min-width: 768px) and (max-width: 1024px){
   /* Desktop View  */
   .cards {
-    /* Creates padding that works on smaller screens  */
     padding-left: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
     padding-right: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
   }
@@ -419,8 +421,11 @@ footer svg {
   }
 
   .cards {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     padding: 40px 20px;
+    gap: 12px;
+    padding-left: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
+    padding-right: max(24px, calc((100% - var(--layout-max)) / 2 + 24px));
   }
 
   main > h1 {
